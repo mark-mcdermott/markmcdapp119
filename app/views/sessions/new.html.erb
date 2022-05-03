@@ -1,0 +1,12 @@
+<h1>Log in</h1>
+
+<% flash.each do |type,msg| %>
+  <p class="<%= type %>"><%= msg %></p>
+<% end %>
+
+<%= form_tag '/login' do %>
+  Email: <%= text_field_tag :email %><br>
+  Password: <%= password_field_tag :password %><br>
+  <%= submit_tag "Log in" %>
+<% end %>
+<p>New user? <a href='/signup'>Sign up now!</a></p>
