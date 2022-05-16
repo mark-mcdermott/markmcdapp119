@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users
 
   # root 'home#index'
-  root 'sessions#new'
+  root 'posts#index'
   get '/login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/all_posts', to: 'posts#index'
   get '/my_posts', to: 'posts#user_posts'
 
-  get '/follow/:id', to: 'follow#follow_user'
-
+  post '/follow/:id', to: 'follow#follow_user'
+  delete '/follow/:id', to: 'follow#unfollow_user'
 
 end

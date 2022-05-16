@@ -16,6 +16,20 @@ module ApplicationHelper
     end
   end
 
+  def following?(user_id)
+    current_user_relations = Relationship.where(follower_id: current_user.id)
+    if current_user_relations.empty? 
+      return false 
+    else
+      user_follows = current_user_relations.where(followed_id: user_id)
+      if user_follows.empty? 
+        return false
+      else
+        return true
+      end 
+    end
+  end
+
   def forget(user)
     user.forget 
     cookies.delete(:user_id)

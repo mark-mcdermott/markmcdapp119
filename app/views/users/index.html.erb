@@ -6,12 +6,19 @@
 
 <h1>Users</h1>
 
-<div id="users">
+<div id="users" class="page">
+  <%= link_to "New user", new_user_path, class: "btn btn-primary btn-lg new" %>
   <% @users.each do |user| %>
-    <%= render user %>
-    <p><%= link_to "Show this user", user %></p>
-    <%= link_to "Follow user", '/follow/'+user.id.to_s %>
+    <% if user.id != current_user.id %>
+      <%= render user %>
+      <p class="button-row">
+        <%= link_to "Show user", user, class: "btn btn-primary btn-sm" %>
+        <% if following?(user.id) %>
+          <%= link_to "Unfollow user", '/follow/'+user.id.to_s, class: "btn btn-secondary btn-sm", method: :delete %>
+        <% else %>
+          <%= link_to "Follow user", '/follow/'+user.id.to_s, class: "btn btn-secondary btn-sm", method: :post %>
+        <% end %>
+      </p>
+    <% end %>
   <% end %>
 </div>
-
-<%= link_to "New user", new_user_path %>

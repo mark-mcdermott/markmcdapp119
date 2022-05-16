@@ -2,13 +2,18 @@
 
 <h1>Posts</h1>
 
-<div id="posts">
+<div id="posts" class="page">
+  <%= link_to "New Post", new_post_path, class: "btn btn-primary btn-lg new" %>
   <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+    <% if post.user_id != current_user.id %>
+      <% if following?(post.user_id) %>
+        <%= render post %>
+        <p class="button-row">
+          <%= link_to "Show this post", post, class: "btn btn-secondary btn-sm" %>
+        </p>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
 
-<%= link_to "New post", new_post_path %>
+

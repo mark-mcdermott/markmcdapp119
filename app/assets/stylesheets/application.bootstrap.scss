@@ -1,6 +1,30 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-body {
-	background: $gray-200;
+h1 {
+	margin: 50px 0;
+	font-size: 5rem;
+	font-weight: bold;
 }
+
+.btn-secondary {
+	background: #00bcd4; 
+	border: 1px solid #00bcd4;
+	&:hover {
+		background: darken(#00bcd4, 10%);
+		border: 1px solid darken(#00bcd4, 10%);
+	}
+}
+
+.page {
+	.card {
+		margin: 0 0 15px;
+	}
+	p.button-row {
+		margin: 0 0 45px;
+	}
+	.btn.new {
+		margin: 0 0 50px;
+	}
+}
+
